@@ -2,7 +2,5 @@ pandas
 numpy
 gensim
 scikit-learn
-matplotlib
-seaborn
 jupyter
 openpyxl
