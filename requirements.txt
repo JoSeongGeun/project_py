@@ -1,7 +1,7 @@
-pandas
-numpy
-gensim
-scikit-learn
-jupyter
-openpyxl
+fastapi
 uvicorn
+pandas
+gensim
+numpy
+scikit-learn
+sqlite3
