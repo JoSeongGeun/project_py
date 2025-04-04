@@ -4,4 +4,3 @@ pandas
 gensim
 numpy
 scikit-learn
-sqlite3
