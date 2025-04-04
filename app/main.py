@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from model import WeddingHallRecommender
-from database import fetch_all_halls
+from app.model import WeddingHallRecommender
+from app.database import fetch_all_halls
 
 app = FastAPI()
 recommender = WeddingHallRecommender()
