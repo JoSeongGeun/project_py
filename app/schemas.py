@@ -1,8 +1,8 @@
-from typing import List
 from pydantic import BaseModel
+from typing import List
 
-class RecommendRequest(BaseModel):
-    리뷰: List[List[str]]
+class SurveyInput(BaseModel):
+    리뷰: List[str]
     대관료: int
     식대: int
     최소수용인원: int
