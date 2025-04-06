@@ -1,5 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
+gensim
 pandas
 scikit-learn
-numpy

@@ -5,6 +5,10 @@ from .model import WeddingRecommender
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # 프론트와 연동 시 필요
