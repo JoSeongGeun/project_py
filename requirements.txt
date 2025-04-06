@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-pandas
 gensim
-numpy
 scikit-learn
+pandas
+numpy

@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode settings
+.vscode/
+
+# SQLite DB
+*.db
+
+# Doc2Vec model
+doc2vec.model
+wedding_halls_with_vectors.csv
+
+# OS files
+.DS_Store
+Thumbs.db
