@@ -21,5 +21,11 @@ recommender = WeddingRecommender()
 
 @app.post("/recommend")
 def recommend_wedding_hall(request: SurveyRequest):
-    result = recommender.recommend(request.dict())
-    return {"recommendations": result}
+    try:
+        result = recommender.recommend(request.dict())
+        return {"recommendations": result}
+    except Exception as e:
+        import traceback
+        print("❌ 오류 발생:", e)
+        traceback.print_exc()
+        return {"error": str(e)}
