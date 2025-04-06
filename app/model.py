@@ -47,6 +47,9 @@ class WeddingRecommender:
             df["car_park_sim"] * survey_data["car_park_weight"]
         )
 
+        # 중복 제거: 예식장 이름 기준으로 중복 제거
+        df = df.drop_duplicates(subset="예식장", keep="first")
+        
         top5 = df.sort_values("total_sim", ascending=False).head(5)
 
         return top5[[
