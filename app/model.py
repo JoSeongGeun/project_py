@@ -9,7 +9,7 @@ import os
 class WeddingRecommender:
     def __init__(self, csv_path="data/data.csv"):
         self.df = pd.read_csv(csv_path, encoding="utf-8-sig")
-        self.df["doc2vec_vector"] = self.df["doc2vec_vector"].apply(json.loads).apply(np.array)
+        self.df["doc2vec_vector"] = self.df["doc2vec_vector"].apply(lambda x: np.array(x.strip("[]").split())).astype(float)
 
     def recommend(self, survey):
         # 입력 데이터 프레임 변환
