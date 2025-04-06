@@ -5,9 +5,14 @@ from sklearn.preprocessing import MinMaxScaler
 from .utils import get_tfidf_vector
 
 class WeddingRecommender:
-    def __init__(self, csv_path="data/data.csv"):
-        self.df = pd.read_csv(csv_path, encoding="utf-8-sig")
-        self.df["cleaned_doctagged_doc"] = self.df["cleaned_doc"].apply(eval)
+    def __init__(self):
+        self.df = pd.read_csv("data/data.csv")
+
+        # 안전한 방식으로 리스트 컬럼 처리
+        if isinstance(self.df["cleaned_doc"].iloc[0], str) and self.df["cleaned_doc"].iloc[0].startswith("["):
+            self.df["cleaned_doctagged_doc"] = self.df["cleaned_doc"].apply(eval)
+        else:
+            self.df["cleaned_doctagged_doc"] = self.df["cleaned_doc"]
 
     def recommend(self, survey_data):
         user_keywords = sum(survey_data["리뷰"], [])  # [['좋다'], ['예쁘다']] -> ['좋다', '예쁘다']
