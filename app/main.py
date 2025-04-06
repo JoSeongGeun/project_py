@@ -18,5 +18,7 @@ def root():
 
 @app.post("/recommend")
 def recommend(survey: SurveyInput):
+    print("📥 입력된 설문 데이터:", survey.dict())
     result = recommender.recommend(survey.dict())
+    print("📤 추천 결과:", result)  # ← 결과 확인용
     return {"recommendations": result}

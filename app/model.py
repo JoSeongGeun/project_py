@@ -9,7 +9,22 @@ import os
 class WeddingRecommender:
     def __init__(self, csv_path="data/data.csv"):
         self.df = pd.read_csv(csv_path, encoding="utf-8-sig")
-        self.df["doc2vec_vector"] = self.df["doc2vec_vector"].apply(lambda x: np.array(x.strip("[]").split(), dtype=float))
+
+        # 👉 안전하게 doc2vec_vector 컬럼 파싱하는 함수
+        def parse_vector(x):
+            try:
+                if isinstance(x, str):
+                    return np.array(x.strip("[]").split(), dtype=float)
+                elif isinstance(x, list) or isinstance(x, np.ndarray):
+                    return np.array(x)
+                else:
+                    return np.zeros(300)
+            except Exception as e:
+                print("❌ doc2vec_vector 파싱 에러:", e)
+                return np.zeros(300)
+
+        # 👉 파싱 함수 적용
+        self.df["doc2vec_vector"] = self.df["doc2vec_vector"].apply(parse_vector)
 
     def recommend(self, survey):
         # 입력 데이터 프레임 변환
