@@ -7,12 +7,12 @@ from .utils import get_tfidf_vector
 class WeddingRecommender:
     def __init__(self, csv_path="data/data.csv"):
         self.df = pd.read_csv(csv_path, encoding="utf-8-sig")
-        self.df["tagged_doc"] = self.df["tagged_doc"].apply(eval)
+        self.df["cleaned_doctagged_doc"] = self.df["cleaned_doc"].apply(eval)
 
     def recommend(self, survey_data):
         user_keywords = sum(survey_data["리뷰"], [])  # [['좋다'], ['예쁘다']] -> ['좋다', '예쁘다']
         user_text = " ".join(user_keywords)
-        corpus = [" ".join(words) for words in self.df["tagged_doc"]]
+        corpus = [" ".join(words) for words in self.df["cleaned_doc"]]
 
         user_vec, data_vecs = get_tfidf_vector(user_keywords=user_keywords, corpus=corpus)
         tfidf_sim = cosine_similarity(user_vec, data_vecs).flatten()
