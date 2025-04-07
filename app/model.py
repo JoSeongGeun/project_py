@@ -46,8 +46,8 @@ class WeddingRecommender:
 
         df = df.drop_duplicates(subset="예식장", keep="first")
 
-        top5 = df.sort_values("total_sim", ascending=False).head(5)
+        top3 = df.sort_values("total_sim", ascending=False).head(3)
 
-        return top5[[
+        return top3[[
             "예식장", "대관료", "식대", "최소수용인원", "최대수용인원", "주차장(대)", "total_sim"
         ]].to_dict(orient="records")
