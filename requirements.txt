@@ -4,3 +4,4 @@ pandas
 uvicorn
 fastapi
 gensim==4.3.2
+pydantic
