@@ -4,6 +4,12 @@ from fastapi.responses import JSONResponse
 from app.model import WeddingRecommender
 from app.schema import SurveyRequest
 
+@app.middleware("http")
+async def log_middleware(request: Request, call_next):
+    print(f"🔥 들어온 요청: {request.method} {request.url}")
+    response = await call_next(request)
+    return response
+
 app = FastAPI()
 
 # ✅ CORS 미들웨어 - 명시적으로 설정
