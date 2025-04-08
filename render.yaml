@@ -1,8 +1,9 @@
+# render.yaml (혹시 없으면 새로 만들어줘)
 services:
   - type: web
     name: project-py
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: ""
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
     plan: free
     autoDeploy: true
