@@ -1,20 +1,24 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware  # ✅ FastAPI용 CORS 미들웨어
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from app.model import WeddingRecommender
 from app.schema import SurveyRequest
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
-# ✅ CORS 설정
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=False,  # 자격 정보 안 쓸 거면 이렇게
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 recommender = WeddingRecommender()
+
+@app.options("/recommend")  # ✅ OPTIONS 메서드 허용
+async def options_handler():
+    return JSONResponse(content={"message": "CORS preflight accepted"}, status_code=200)
 
 @app.post("/recommend")
 def recommend(survey_data: SurveyRequest):
