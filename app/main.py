@@ -8,7 +8,7 @@ app = FastAPI()
 # ✅ CORS 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 개발 중에는 * 사용, 배포 시에는 도메인 지정 예: ["https://yourdomain.com"]
+    allow_origins=["http://localhost:3000"],  # 로컬 개발 환경 React 주소
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
