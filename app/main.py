@@ -8,8 +8,8 @@ app = FastAPI()
 # ✅ CORS 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # 로컬 개발 환경 React 주소
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,  # 자격 정보 안 쓸 거면 이렇게
     allow_methods=["*"],
     allow_headers=["*"],
 )
