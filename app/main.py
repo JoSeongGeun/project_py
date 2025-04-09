@@ -32,3 +32,7 @@ async def preflight_handler():
 def recommend(survey_data: SurveyRequest):
     result = recommender.recommend(survey_data.dict())
     return {"recommendations": result}
+
+@app.get("/ping")
+def ping():
+    return {"message": "pong"}
