@@ -3,7 +3,7 @@ import time
 import datetime
 import requests
 
-PING_URL = "서버주소 + /ping"
+PING_URL = "https://project-py-5lx0.onrender.com/ping"
 
 def send_ping():
     now = datetime.datetime.now().strftime("%H:%M:%S")
