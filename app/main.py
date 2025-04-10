@@ -4,21 +4,23 @@ from fastapi.responses import JSONResponse
 from app.model import WeddingRecommender
 from app.schema import SurveyRequest
 
+app = FastAPI()
+
+
 @app.middleware("http")
 async def log_middleware(request: Request, call_next):
     print(f"🔥 들어온 요청: {request.method} {request.url}")
     response = await call_next(request)
     return response
 
-app = FastAPI()
 
 # ✅ CORS 미들웨어 - 명시적으로 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 💡 로컬 개발 React 주소만 허용
-    allow_credentials=True,  # 💡 브라우저 요청에 권한 정보 포함 허용
-    allow_methods=["*"],  # 💡 OPTIONS 명시
-    allow_headers=["*"],  # 💡 헤더도 허용
+    allow_origins=["*"],  
+    allow_credentials=True,  
+    allow_methods=["*"],  
+    allow_headers=["*"],  
 )
 
 recommender = WeddingRecommender()
