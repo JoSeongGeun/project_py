@@ -3,7 +3,8 @@ numpy
 pandas
 uvicorn
 fastapi
-gensim==4.3.2
 pydantic
 requests
 schedule
+scipy>=1.10.0
+gensim>=4.3.0
