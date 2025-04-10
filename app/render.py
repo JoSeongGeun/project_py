@@ -1,26 +1,59 @@
+from contextlib import asynccontextmanager
+import threading
 import schedule
 import time
-import datetime
 import requests
+import datetime
 
-PING_URL = "https://project-py-5lx0.onrender.com/ping"
 
 def send_ping():
     now = datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now}] Sending ping to {PING_URL}")
+    url = "https://project-py-5lx0.onrender.com/ping"
     try:
-        res = requests.get(PING_URL)
-        print(f"일어났습니다")
+        print(f"[{now}] Sending ping to {url}")
+        res = requests.get(url)
+        print(f"[{now}] Ping OK: {res.status_code}")
     except Exception as e:
-        print(f"안일어났습니다")
+        print(f"[{now}] Ping failed: {e}")
 
-# 14분 간격으로 등록 (업무 시간 내에서만 실행되도록)
-schedule.every(14).minutes.do(lambda: (
-    send_ping() if 9 <= datetime.datetime.now().hour < 18 else print("퇴근시간입니다.")
-))
+def run_scheduler():
+    schedule.every(14).minutes.do(send_ping)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-print("출근했습니다")
+# ✅ lifespan 이벤트로 scheduler 실행
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    threading.Thread(target=run_scheduler, daemon=True).start()
+    print("✅ keep-alive scheduler started.")
+    yield
+    print("🛑 App shutting down...")
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# ✅ FastAPI 객체에 lifespan 연결
+app = FastAPI(lifespan=lifespan)
+
+# ✅ 기존 라우터들 유지
+class QueryInput(BaseModel):
+    query: Union[str, list[str]]
+
+@app.post("/recommend")
+def recommend_weddingHall(input: QueryInput):
+    try:
+        query = input.query if isinstance(input.query, list) else [k.strip() for k in input.query.split(",")]
+        result = get_weddingHall_recommendations(query)
+        return result["recommendations"]
+    except Exception as e:
+        print(traceback.format_exc())
+        return {"error": str(e)}
+
+@app.get("/")
+async def index():
+    return {
+        "message": "Plan My Wedding 추천 API가 정상 작동 중입니다.",
+        "example_query": "드메르, 까사디루체, 위더스 입니다."
+    }
+
+@app.get("/ping")
+def ping():
+    return {"message": "pong"}

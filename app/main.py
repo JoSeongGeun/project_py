@@ -14,7 +14,6 @@ async def log_middleware(request: Request, call_next):
     return response
 
 
-# ✅ CORS 미들웨어 - 명시적으로 설정
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
