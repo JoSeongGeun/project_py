@@ -46,7 +46,7 @@
 
 ## 📁 프로젝트 구조
 
-
+```
 project_py/
 ├── app/
 │   ├── main.py           # FastAPI 진입점 및 라우팅
@@ -62,7 +62,7 @@ project_py/
 ├── Procfile              # Render 서버 실행 명령
 ├── render.yaml           # Render 배포 설정 파일
 ├── requirements.txt      # Python 패키지 의존성 목록
-
+```
 
 
 ---
