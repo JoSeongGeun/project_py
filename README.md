@@ -95,7 +95,7 @@ project_py/
 ## 📦 설치 및 실행 방법
 
 
-
+```
 git clone https://github.com/yourusername/plan-my-wedding.git
 cd plan-my-wedding
 pip install -r requirements.txt
@@ -105,3 +105,4 @@ Render 무료 플랜에서 앱이 슬립되는 문제를 방지하기 위해 14�
 
 📬 문의
 궁금한 점이나 피드백은 Issues 탭에 남겨주세요 😊
+```
