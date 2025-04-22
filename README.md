@@ -17,13 +17,30 @@
 
 ---
 
-## 🛠 사용 기술
+## 🛠️ 사용 기술 스택
 
-- **Backend**: FastAPI, Uvicorn
-- **ML/NLP**: Word2Vec (Gensim), Cosine Similarity, Scikit-learn
-- **Data**: Pandas, Numpy
-- **Infra**: Render, Schedule (Keep-Alive), threading
-- **ETC**: pydantic, requests
+### 🚀 Backend
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Uvicorn](https://img.shields.io/badge/Uvicorn-121212?style=for-the-badge&logo=uvicorn&logoColor=white)
+
+### 🤖 ML / NLP
+![Gensim](https://img.shields.io/badge/Gensim-FFD700?style=for-the-badge&logo=gensim&logoColor=black)
+![Word2Vec](https://img.shields.io/badge/Word2Vec-339933?style=for-the-badge&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+
+### 📊 Data
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+
+### ☁️ Infra / DevOps
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+![Schedule](https://img.shields.io/badge/Schedule-FF6F00?style=for-the-badge)
+![Threading](https://img.shields.io/badge/Threading-4CAF50?style=for-the-badge)
+
+### 🧩 ETC
+![Pydantic](https://img.shields.io/badge/Pydantic-0865A6?style=for-the-badge)
+![Requests](https://img.shields.io/badge/Requests-2A6EBB?style=for-the-badge&logo=python&logoColor=white)
+
 
 ---
 
