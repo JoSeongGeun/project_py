@@ -46,7 +46,7 @@
 
 ## 📁 프로젝트 구조
 
-```
+
 project_py/
 ├── app/
 │   ├── main.py           # FastAPI 진입점 및 라우팅
@@ -95,7 +95,7 @@ project_py/
 ## 📦 설치 및 실행 방법
 
 
-```bash
+
 git clone https://github.com/yourusername/plan-my-wedding.git
 cd plan-my-wedding
 pip install -r requirements.txt
