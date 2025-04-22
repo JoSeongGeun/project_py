@@ -64,7 +64,9 @@ project_py/
 ├── requirements.txt      # Python 패키지 의존성 목록
 
 
+
 ---
+
 
 ## 🌐 API 엔드포인트
 
@@ -74,7 +76,9 @@ project_py/
 | GET    | `/`              | API 소개 메시지 반환            |
 | POST   | `/recommend`     | 사용자 입력 기반 예식장 추천    |
 
+
 ---
+
 
 ## 🧪 추천 방식 요약
 
@@ -84,9 +88,12 @@ project_py/
 4. 대관료, 식대, 수용인원 등 수치 정보 유사도 계산
 5. 가중치 적용 후 `total_sim`로 정렬 → Top 5 추천
 
+
 ---
 
+
 ## 📦 설치 및 실행 방법
+
 
 ```bash
 git clone https://github.com/yourusername/plan-my-wedding.git
