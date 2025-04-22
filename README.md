@@ -29,11 +29,23 @@
 
 ## 📁 프로젝트 구조
 
-project_py/ ├── app/ │ ├── main.py # FastAPI 진입점 │ ├── model.py # 추천 로직 정의 │ ├── render.py # Render keep-alive 스케줄러 │ ├── schema.py # Pydantic 모델 │ └── utils.py # Word2Vec 유틸 함수 ├── data/ │ └── data.csv # 예식장 원본 데이터 ├── model/ │ └── word2vec.model # 학습된 Word2Vec 모델 ├── requirements.txt # 의존성 패키지 목록 ├── render.yaml # Render 배포 설정 └── Procfile # Uvicorn 실행 명령
+```
+project_py/
+├── app/
+│   ├── main.py           # FastAPI 진입점 및 라우팅
+│   ├── model.py          # 추천 알고리즘 로직 (Word2Vec, 유사도 계산)
+│   ├── render.py         # Render용 keep-alive 스케줄러
+│   ├── schema.py         # Pydantic 기반 요청 데이터 모델 정의
+│   └── utils.py          # Word2Vec 벡터 관련 유틸 함수
+├── data/
+│   └── data.csv          # 예식장 데이터셋
+├── model/
+│   └── word2vec.model    # 학습된 Word2Vec 모델 파일
+├── .gitignore            # Git에서 무시할 파일 목록
+├── Procfile              # Render 서버 실행 명령
+├── render.yaml           # Render 배포 설정 파일
+├── requirements.txt      # Python 패키지 의존성 목록
 
-yaml
-복사
-편집
 
 ---
 
