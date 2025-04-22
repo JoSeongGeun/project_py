@@ -1,9 +1,71 @@
-![Deep Learning](https://img.shields.io/badge/Deep%20Learning-8A2BE2?style=flat-square&logo=brains&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-![Keras](https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![Cloud](https://img.shields.io/badge/Cloud-4285F4?style=flat-square&logo=cloud&logoColor=white)
-![Chatbot](https://img.shields.io/badge/Chatbot-00BFA5?style=flat-square&logo=dialogflow&logoColor=white)
+# 💍 Plan My Wedding - 예식장 추천 시스템
 
+> 자연어 리뷰 + 수치 기반 조건을 통해 나에게 딱 맞는 예식장을 추천해주는 AI 기반 시스템입니다.
+
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Pydantic](https://img.shields.io/badge/Pydantic-2.0+-green)](https://docs.pydantic.dev/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Gensim](https://img.shields.io/badge/gensim-4.3.0+-purple)](https://radimrehurek.com/gensim/)
+[![Deployed on Render](https://img.shields.io/badge/Hosted%20on-Render-430098?logo=render)](https://render.com)
+
+---
+
+## 🚀 프로젝트 소개
+
+자연어 리뷰 데이터를 Word2Vec 기반 임베딩으로 처리하고, 사용자의 예산·수용인원·주차장 수 등의 조건에 따라 최적의 예식장을 추천해주는 FastAPI 기반의 웹 서비스입니다.
+
+---
+
+## 🛠 사용 기술
+
+- **Backend**: FastAPI, Uvicorn
+- **ML/NLP**: Word2Vec (Gensim), Cosine Similarity, Scikit-learn
+- **Data**: Pandas, Numpy
+- **Infra**: Render, Schedule (Keep-Alive), threading
+- **ETC**: pydantic, requests
+
+---
+
+## 📁 프로젝트 구조
+
+project_py/ ├── app/ │ ├── main.py # FastAPI 진입점 │ ├── model.py # 추천 로직 정의 │ ├── render.py # Render keep-alive 스케줄러 │ ├── schema.py # Pydantic 모델 │ └── utils.py # Word2Vec 유틸 함수 ├── data/ │ └── data.csv # 예식장 원본 데이터 ├── model/ │ └── word2vec.model # 학습된 Word2Vec 모델 ├── requirements.txt # 의존성 패키지 목록 ├── render.yaml # Render 배포 설정 └── Procfile # Uvicorn 실행 명령
+
+yaml
+복사
+편집
+
+---
+
+## 🌐 API 엔드포인트
+
+| Method | Endpoint        | Description                     |
+|--------|------------------|---------------------------------|
+| GET    | `/ping`          | 헬스 체크 (pong 반환)           |
+| GET    | `/`              | API 소개 메시지 반환            |
+| POST   | `/recommend`     | 사용자 입력 기반 예식장 추천    |
+
+---
+
+## 🧪 추천 방식 요약
+
+1. 사용자 리뷰 키워드 → Word2Vec 평균 벡터화
+2. 모든 예식장 문서 → Word2Vec 벡터화
+3. Cosine Similarity 계산 (리뷰 유사도)
+4. 대관료, 식대, 수용인원 등 수치 정보 유사도 계산
+5. 가중치 적용 후 `total_sim`로 정렬 → Top 5 추천
+
+---
+
+## 📦 설치 및 실행 방법
+
+```bash
+git clone https://github.com/yourusername/plan-my-wedding.git
+cd plan-my-wedding
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+🔁 Keep-Alive 기능 (Render 호스팅용)
+Render 무료 플랜에서 앱이 슬립되는 문제를 방지하기 위해 14분마다 /ping 엔드포인트로 자동 요청을 보내는 스케줄러 내장.
+
+📬 문의
+궁금한 점이나 피드백은 Issues 탭에 남겨주세요 😊
