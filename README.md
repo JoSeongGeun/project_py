@@ -112,3 +112,8 @@ Render 무료 플랜에서 앱이 슬립되는 문제를 방지하기 위해 14�
 https://github.com/yugwangmyeong/PlanMyWedding/tree/main
 
 ---
+
+## youtube 시연영상
+https://www.youtube.com/watch?v=q8-gxI0F9zk
+
+---
