@@ -103,6 +103,12 @@ uvicorn app.main:app --reload
 🔁 Keep-Alive 기능 (Render 호스팅용)
 Render 무료 플랜에서 앱이 슬립되는 문제를 방지하기 위해 14분마다 /ping 엔드포인트로 자동 요청을 보내는 스케줄러 내장.
 
-📬 문의
-궁금한 점이나 피드백은 Issues 탭에 남겨주세요 😊
 ```
+
+---
+
+## PlanMyWedding 메인 github
+
+https://github.com/yugwangmyeong/PlanMyWedding/tree/main
+
+---
